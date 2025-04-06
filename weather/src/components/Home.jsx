@@ -242,7 +242,7 @@ const Home = () => {
         </main>
 
         {/* Footer */}
-        <footer className="w-full bg-white mt-12 text-center font-extrabold  text-black text-[20px]">
+        <footer className="w-full bg-white mt-12 text-center font-extrabold  text-black text-[20px] rounded-xl shadow-lg p-6 hover:scale-[1.04] transition-all duration-500 ease-in-out">
           <p>© 2023 WeatherApp. All rights reserved.</p>
           <div className='flex flex-row w-full justify-center items-center space-x-2 '>
             <img src={devlopeImg} alt="devlope" className="w-5 h-5" />
