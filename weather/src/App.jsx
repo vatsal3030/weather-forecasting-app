@@ -5,10 +5,10 @@ import Home from './components/Home';
 import Graph from './components/WeatherGraph';
 import TopNews from './components/TopNews';
 import Search from './components/search';
-import NewsPage from './components/NewsPage';
 import Map from './components/Map';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
+import { motion } from 'framer-motion';
 
 
 
@@ -19,77 +19,100 @@ function App() {
         path: "/",
         element:
           <div>
-            <Navbar>
-            </Navbar>
-            <Home>
-            </Home>
+
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+              <Navbar>
+              </Navbar>
+              <Home>
+              </Home>
+            </motion.div>
           </div>
       },
       {
         path: "/home",
         element:
           <div>
-            <Navbar>
-            </Navbar>
-            <Home>
-            </Home>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+              <Navbar>
+              </Navbar>
+              <Home>
+              </Home>
+            </motion.div>
+
           </div>
       },
       {
         path: "/navbar",
         element:
           <div>
-            <Navbar>
-            </Navbar>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+              <Navbar>
+              </Navbar>
+            </motion.div>
+
           </div>
       },
       {
         path: "/search",
         element:
           <div>
-            <Navbar>
-            </Navbar>
-            <Search></Search>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+              <Navbar>
+              </Navbar>
+              <Search></Search>
+            </motion.div>
+
           </div>
       },
       {
         path: "/graph",
         element:
           <div>
-            <Navbar>
-            </Navbar>
-            <Graph>
-            </Graph>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+              <Navbar>
+              </Navbar>
+              <Graph>
+              </Graph>
+            </motion.div>
+
           </div>
       },
       {
         path: "/map",
         element:
           <div>
-            <Navbar>
-            </Navbar>
-            <Map>
-            </Map>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+              <Navbar>
+              </Navbar>
+              <Map>
+              </Map>
+            </motion.div>
+
           </div>
       },
       {
         path: "/news",
         element:
           <div>
-            <Navbar>
-            </Navbar>
-            <TopNews>
-            </TopNews>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+              <Navbar>
+              </Navbar>
+              <TopNews>
+              </TopNews>
+            </motion.div>
+
           </div>
       },
       {
         path: "/news/details",
         element:
           <div>
-            <Navbar>
-            </Navbar>
-            <NewsPage>
-            </NewsPage>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+              <Navbar>
+              </Navbar>
+            </motion.div>
+
+
           </div>
       }
       ,
@@ -97,7 +120,10 @@ function App() {
         path: "/signup",
         element:
           <div>
-            <SignUp></SignUp>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+              <SignUp></SignUp>
+            </motion.div>
+
           </div>
       }
       ,
@@ -105,7 +131,9 @@ function App() {
         path: "/signin",
         element:
           <div>
-            <SignIn></SignIn>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+              <SignIn></SignIn>
+            </motion.div>
           </div>
       }
     ]

@@ -27,6 +27,7 @@ const WeatherApp = () => {
   const [pastData, setPastData] = useState([]);
   const [timeframe, setTimeframe] = useState(7); // Default: 7 days
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const API_KEY = "cbbffc95b1351710889b79afe12835d0"; // Replace with your API key
 
@@ -45,6 +46,9 @@ const WeatherApp = () => {
       setError("Please enter a city name");
       return;
     }
+
+    setLoading(true);
+
     setError("");
 
     try {
@@ -66,6 +70,8 @@ const WeatherApp = () => {
       setError("Failed to fetch weather. Please try again later.");
       setWeather(null);
     }
+    setLoading(false);
+
   };
 
   const fetchPastWeather = async (lat, lon) => {
@@ -149,14 +155,43 @@ const WeatherApp = () => {
             placeholder="Enter city..."
             value={city}
             onChange={(e) => setCity(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && fetchWeather()}
             className="p-2 rounded-md text-white border-2 border-blue-300"
           />
           <button
             onClick={fetchWeather}
-            className="bg-black px-4 py-2 rounded-md hover:bg-gray-800 transition"
+            disabled={loading}
+            className={`flex items-center px-4 py-2 rounded-md transition text-white 
+    ${loading ? "bg-indigo-500 cursor-not-allowed" : "bg-indigo-600 hover:bg-indigo-700"}`}
           >
-            Get Weather
+            {loading ? (
+              <>
+                <svg
+                  className="mr-2 size-5 animate-spin text-white"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                  ></path>
+                </svg>
+                Processing…
+              </>
+            ) : (
+              "Get Weather"
+            )}
           </button>
+
         </div>
 
         {error && <p className="mt-4 text-red-300">{error}</p>}

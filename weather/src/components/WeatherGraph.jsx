@@ -20,12 +20,16 @@ const WeatherGraph = () => {
     const [weatherData, setWeatherData] = useState([]);
     const [selectedRange, setSelectedRange] = useState("7");
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+
 
     useEffect(() => {
         fetchWeatherData();
     }, [selectedRange]);
 
     const fetchWeatherData = async () => {
+        setLoading(true);
+
         try {
             const response = await fetch(
                 `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`
@@ -53,6 +57,8 @@ const WeatherGraph = () => {
             console.error("Error fetching data:", error);
             setError("Failed to fetch weather data.");
         }
+        setLoading(false);
+
     };
 
     const graphOptions = [
@@ -85,12 +91,30 @@ const WeatherGraph = () => {
                     type="text"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
-                   className="p-2 rounded-md text-white border-2 border-blue-300"
+                    className="p-2 rounded-md text-white border-2 border-blue-300"
                     placeholder="Enter city..."
                 />
-                <button onClick={fetchWeatherData} className="bg-blue-600 px-4 py-2 rounded-md hover:bg-blue-800 transition">
-                    Get Weather
+                <button
+                    onClick={fetchWeatherData}
+                    disabled={loading}
+                    className={`flex items-center px-4 py-2 rounded-md transition text-white 
+    ${loading ? "bg-indigo-500 cursor-not-allowed" : "bg-indigo-600 hover:bg-indigo-700"}`}
+                >
+                    {loading ? (
+                        <>
+                            <svg className="mr-2 size-5 animate-spin text-white" viewBox="0 0 24 24" fill="none">
+                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                            </svg>
+                            Getting…
+                        </>
+                    ) : (
+                        "Get Weather"
+                    )}
                 </button>
+
+
+
             </div>
             <div className="flex justify-center gap-4 mb-6">
                 {graphOptions.map((option) => (
