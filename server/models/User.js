@@ -20,6 +20,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please provide email'],
     unique: true,
+    maxlength: 100,           // Prevents large spam input
     validate: {
       validator: validator.isEmail,
       message: 'Please provide a valid email'
@@ -29,19 +30,20 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please provide password'],
     minlength: [6, 'Password should be at least 6 characters'],
+    maxlength: 64,             // Avoid excessive size (hashes are usually 60-64 chars)
     select: false
   }
 });
 
 // Hash password before saving
-UserSchema.pre('save', async function() {
+UserSchema.pre('save', async function () {
   if (!this.isModified('password')) return;
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 });
 
 // Generate JWT token
-UserSchema.methods.createJWT = function() {
+UserSchema.methods.createJWT = function () {
   return jwt.sign(
     { userId: this._id },
     process.env.JWT_SECRET,
@@ -50,7 +52,7 @@ UserSchema.methods.createJWT = function() {
 };
 
 // Compare password
-UserSchema.methods.comparePassword = async function(candidatePassword) {
+UserSchema.methods.comparePassword = async function (candidatePassword) {
   const isMatch = await bcrypt.compare(candidatePassword, this.password);
   return isMatch;
 };

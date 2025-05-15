@@ -2,11 +2,21 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
-
+const rateLimit = require('express-rate-limit');
 const users = require('./routes/users');
 const auth = require('./routes/auth');
 
 const app = express();
+
+
+// General rate limiter (100 requests per 15 minutes per IP)
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per window
+  message: 'Too many requests from this IP, please try again later.',
+});
+
+app.use(limiter);
 
 // Connect Database
 connectDB();
