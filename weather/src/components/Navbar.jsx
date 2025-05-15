@@ -140,7 +140,7 @@ const Navbar = () => {
                                 onClick={toggleMenu}
                                 className="cursor-pointer right-4 top-4 text-blue-800 z-50 fixed pointer-events-auto"
                                 style={{
-                                    background: 'linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0))',
+                                    // background: 'linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0))',
                                     backdropFilter: 'blur(6px)',
                                 }}
                             >
@@ -205,6 +205,11 @@ const Navbar = () => {
                                     News
                                 </NavLink>
                                 <div className="absolute bottom-10 flex flex-col items-center justify-end  text-center h-fit space-y-6 text-xl font-semibold ">
+                                    <div className="flex flex-row items-center text-xl hover:cursor-pointer">
+                                        <a href="/" className="flex flex-row justify-center items-center gap-2 hover:text-gray-400">
+                                            <img src={logo} alt="logo" className="w-10 h-10" />
+                                        </a>
+                                    </div>
                                     {user ? (
                                         <>
                                             <span className="text-[#2871a2] font-bold">
