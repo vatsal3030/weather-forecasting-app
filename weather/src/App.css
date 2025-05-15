@@ -1,6 +1,6 @@
 #root {
   max-width: 100vw;
-  margin: 0 ;
+  margin: 0;
   padding: 0;
   text-align: center;
 }
@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +24,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -39,4 +42,96 @@
 
 .read-the-docs {
   color: #888;
+}
+
+
+.sidebar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  max-width: 300px;
+  background-color: #000000b8;
+  backdrop-filter: blur(10px);
+  z-index: 999;
+  box-shadow: 0 0 20px rgba(211, 211, 211, 0.411);
+  border-bottom-left-radius: 100%;
+  opacity: 0;
+  animation: none;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(100%);
+  cursor: pointer;
+}
+
+.sidebar ul {
+  padding-left: 20px;
+}
+
+.sidebar ul li {
+  list-style: none;
+  margin-bottom: 30px;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: lightgray;
+  font-size: 30px;
+  font-weight: 900;
+  text-shadow: 0 0 15px rgba(128, 128, 128, 0.256);
+  cursor: pointer;
+}
+
+.sidebar .social-icons {
+  padding-left: 20px;
+  margin-top: 60px;
+  text-wrap: nowrap;
+}
+
+.sidebar .social-icons a {
+  font-size: 35px;
+  padding: 5px 5px;
+  cursor: pointer;
+}
+
+.sidebar.open-sidebar {
+  animation: openSidebarAnimation 1.5s forwards;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0%);
+}
+
+.sidebar.close-sidebar {
+  animation: closeSidebarAnimation 1.5s forwards;
+  pointer-events: auto;
+  transform: translateX(100%);
+}
+
+@keyframes openSidebarAnimation {
+  to {
+    width: 20%;
+    min-width: 200px;
+    opacity: 1;
+    bottom: 0;
+    border-radius: 0;
+  }
+}
+
+@keyframes closeSidebarAnimation {
+  from {
+    width: 50%;
+    min-width: 200px;
+    opacity: 1;
+    bottom: 0;
+    border-radius: 0;
+  }
+
+  to {
+    width: 0;
+    opacity: 0;
+    bottom: 70%;
+    border-bottom-left-radius: 50%;
+  }
 }

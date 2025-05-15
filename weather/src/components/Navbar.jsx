@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from './images/weather-app.png';
 import { Menu, X } from "lucide-react"; // You can also use react-icons
+import '../App.css'
+
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -127,24 +129,109 @@ const Navbar = () => {
                         {user ? 'Dashboard' : 'Get started'}
                     </button> */}
                     </div>
-                    <div>
-                        {/* Mobile Toggle */}
-                        <button onClick={toggleMenu} className="md:hidden text-blue-600">
-                            {isOpen ? <X size={24} /> : <Menu size={24} />}
-                        </button>
 
-                        {/* Mobile Menu */}
-                        {isOpen && (
-                            <ul className="md:hidden bg-white px-4 py-2 space-y-2 text-center shadow">
-                                <li><a href="#home" className="block py-1">Home</a></li>
-                                <li><a href="#about" className="block py-1">About</a></li>
-                                <li><a href="#contact" className="block py-1">Contact</a></li>
-                            </ul>
-                        )}
-                    </div>
                 </>
                 )}
-               
+                {isMobile && (
+                    <>
+                        {/* Toggle Button (Hamburger icon shown when menu is closed) */}
+                        {!isOpen && (
+                            <button
+                                onClick={toggleMenu}
+                                className="cursor-pointer right-4 top-4 text-blue-800 z-50 fixed pointer-events-auto"
+                                style={{
+                                    background: 'linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0))',
+                                    backdropFilter: 'blur(6px)',
+                                }}
+                            >
+                                <Menu size={45} />
+                            </button>
+                        )}
+
+                        {/* Backdrop: dark transparent background behind sidebar to fix overlap and close menu on click */}
+                        {isOpen && (
+                            <div
+                                onClick={toggleMenu}
+                                className="fixed  w-fit z-40 pointer-events-auto sidebar open-sidebar flex flex-col text-center items-center"
+                                style={{
+                                    background: 'linear-gradient(to left, rgba(0,0,0,0.6), rgba(0,0,0,0))',
+                                    backdropFilter: 'blur(6px)',
+                                }}
+                            />
+                        )}
+
+                        {/* Sidebar with your custom animation and cancel icon */}
+                        <div className={`sidebar ${isOpen ? 'open-sidebar' : 'close-sidebar'} flex flex-col text-center items-center `}>
+                            {/* Cancel Button inside sidebar */}
+                            <div onClick={toggleMenu} className="close-icon w-full  flex justify-center p-4 cursor-pointer ">
+                                <button className="cursor-pointer">
+                                    <X size={40} />
+                                </button>
+                            </div>
+                            <div className="flex flex-col items-center justify-start text-center h-full space-y-6 text-xl font-semibold p-4">
+                                <NavLink
+                                    to="/home"
+                                    onClick={toggleMenu}
+                                    className="text-[#2871a2] hover:text-[#2871a275]"
+                                >
+                                    Home
+                                </NavLink>
+                                <NavLink
+                                    to="/search"
+                                    onClick={toggleMenu}
+                                    className="text-[#2871a2] hover:text-[#2871a275]"
+                                >
+                                    Search
+                                </NavLink>
+                                <NavLink
+                                    to="/graph"
+                                    onClick={toggleMenu}
+                                    className="text-[#2871a2] hover:text-[#2871a275]"
+                                >
+                                    Graph
+                                </NavLink>
+                                <NavLink
+                                    to="/map"
+                                    onClick={toggleMenu}
+                                    className="text-[#2871a2] hover:text-[#2871a275]"
+                                >
+                                    Map
+                                </NavLink>
+                                <NavLink
+                                    to="/news"
+                                    onClick={toggleMenu}
+                                    className="text-[#2871a2] hover:text-[#2871a275]"
+                                >
+                                    News
+                                </NavLink>
+                                <div className="absolute bottom-10 flex flex-col items-center justify-end  text-center h-fit space-y-6 text-xl font-semibold ">
+                                    {user ? (
+                                        <>
+                                            <span className="text-[#2871a2] font-bold">
+                                                {user.firstName}
+                                            </span>
+                                            <button
+                                                onClick={handleLogout}
+                                                className="text-[#2871a2] font-bold hover:text-[#2871a275]"
+                                            >
+                                                Log Out
+                                            </button>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <NavLink to="/signup" className="text-[#2871a2] font-bold hover:text-[#2871a275]">
+                                                Sign Up
+                                            </NavLink>
+                                            <NavLink to="/signin" className="text-[#2871a2] font-bold hover:text-[#2871a275]">
+                                                Log In
+                                            </NavLink>
+                                        </>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                )}
             </nav>
         </div>
     );
