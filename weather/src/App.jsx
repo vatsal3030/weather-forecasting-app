@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Graph from './components/WeatherGraph';
 import TopNews from './components/TopNews';
-import Search from './components/search';
+import Search from './components/Search';
 import Map from './components/Map';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
