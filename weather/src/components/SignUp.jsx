@@ -16,6 +16,7 @@ const SignUp = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const BACKEND_URL = import.meta.env.VITE_API_BACKEND_URL;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,7 +32,7 @@ const SignUp = () => {
     setError("");
 
     try {
-      const response = await axios.post("http://localhost:5000/api/users", formData);
+      const response = await axios.post(`${BACKEND_URL}/api/users`, formData);
 
       if (response.data.message === "Signup Successful!") {
         setSuccess(true);
