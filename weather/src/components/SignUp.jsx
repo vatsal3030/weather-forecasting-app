@@ -5,7 +5,7 @@ import { FiUser, FiMail, FiLock, FiLoader } from "react-icons/fi";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 const SignUp = () => {
-  const [showPassword, setShowPassword] = useState('false');
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",

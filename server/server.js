@@ -22,7 +22,13 @@ app.use(limiter);
 connectDB();
 
 // Middleware
-app.use(cors());
+
+app.use(cors({
+  origin: "http://localhost:5173", // or "*" for all origins (not recommended for production)
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true // if you use cookies/authentication
+}));
+
 app.use(express.json());
 
 // Routes

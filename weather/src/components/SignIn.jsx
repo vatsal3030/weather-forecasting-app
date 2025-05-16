@@ -6,7 +6,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 
 const SignIn = () => {
-  const [showPassword, setShowPassword] = useState('false');
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -77,6 +77,7 @@ const SignIn = () => {
               name="password"
               onChange={handleChange}
               required
+              value={formData.password}
               autoComplete="off"  // Prevents auto-filling
               className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
               placeholder="Enter your password"
