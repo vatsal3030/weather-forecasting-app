@@ -20,10 +20,16 @@ app.use(limiter);
 
 // Connect Database
 connectDB();
+app.use(express.json());
+
 
 // Middleware
-app.use(cors());
-app.use(express.json());
+app.use(cors({
+  origin: "https://weather-forecasting-app-ivory.vercel.app/",  // replace with "*" to allow all origins during dev
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: false
+}));
+
 
 // Routes
 app.use('/api/users', users);

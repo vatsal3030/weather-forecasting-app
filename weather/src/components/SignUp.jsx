@@ -17,6 +17,7 @@ const SignUp = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const BACKEND_URL = import.meta.env.VITE_API_BACKEND_URL;
+  console.log("URL : ", BACKEND_URL)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,6 +41,7 @@ const SignUp = () => {
           navigate("/signin");
         }, 1500);
       }
+
     } catch (error) {
       setError(
         error.response?.data?.message ||

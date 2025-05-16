@@ -34,7 +34,7 @@ const SignIn = () => {
         `${BACKEND_URL}/api/auth`,
         formData
       );
-
+console.log("URL : ",BACKEND_URL)
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("user", JSON.stringify(response.data.user));
       console.log(JSON.stringify(response.data.user));
