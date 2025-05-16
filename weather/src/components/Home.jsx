@@ -11,6 +11,8 @@ const Home = () => {
   const [error, setError] = useState(null);
 
   const API_KEY = import.meta.env.VITE_WEATHER_API_KEY; // Replace with your API key
+  console.log("API Key:", import.meta.env.VITE_WEATHER_API_KEY);
+  console.log("Backend URL:", import.meta.env.VITE_API_BACKEND_URL);
 
   // Fetch weather data by coordinates
   const fetchWeatherData = async (lat, lon) => {
