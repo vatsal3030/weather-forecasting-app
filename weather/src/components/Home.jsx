@@ -10,7 +10,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const API_KEY = "cbbffc95b1351710889b79afe12835d0"; // Replace with your API key
+  const API_KEY = import.meta.env.VITE_WEATHER_API_KEY; // Replace with your API key
 
   // Fetch weather data by coordinates
   const fetchWeatherData = async (lat, lon) => {
@@ -103,7 +103,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-20 to-blue-300 p-4 md:p-8">
+    <div className="h-full min-h-screen bg-gradient-to-b from-blue-20 to-blue-400 p-4 md:p-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <header className="mb-8 text-center">
@@ -246,7 +246,7 @@ const Home = () => {
           <p>© 2023 WeatherApp. All rights reserved.</p>
           <div className='flex flex-row w-full justify-center items-center space-x-2 '>
             <img src={devlopeImg} alt="devlope" className="w-5 h-5" />
-            <p className="mt-1 text-blue-400">Devlope By Vatsal & Prashant</p>
+            <p className="mt-1 text-blue-400">Devlope By Vatsal Vadgama</p>
           </div>
         </footer>
       </div>

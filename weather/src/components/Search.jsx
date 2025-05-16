@@ -29,7 +29,7 @@ const WeatherApp = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const API_KEY = "cbbffc95b1351710889b79afe12835d0"; // Replace with your API key
+  const API_KEY = import.meta.env.VITE_WEATHER_API_KEY; // Replace with your API key
 
   useEffect(() => {
     fetchWeather();
@@ -146,7 +146,7 @@ const WeatherApp = () => {
 
   return (
     <div className="overflow-x-hidden relative w-screen flex justify-center items-center">
-      <div className="w-full flex flex-col items-center justify-center h-full bg-gradient-to-b text-white p-4 from-blue-40 to-blue-100  ">
+      <div className="w-full flex flex-col items-center justify-center h-full bg-gradient-to-b text-white p-4 from-blue-20 to-blue-400  ">
         <h1 className="text-white text-3xl font-bold mb-6">Advanced Weather Tracker</h1>
 
         <div className="flex space-x-4">

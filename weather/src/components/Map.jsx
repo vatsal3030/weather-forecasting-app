@@ -12,7 +12,7 @@ const customIcon = new L.Icon({
     iconAnchor: [17, 50],
 });
 
-const API_KEY = "cbbffc95b1351710889b79afe12835d0";
+  const API_KEY = import.meta.env.VITE_WEATHER_API_KEY; // Replace with your API key
 
 const Map = () => {
     const [marker, setMarker] = useState(null);

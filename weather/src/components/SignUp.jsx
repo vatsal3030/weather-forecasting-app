@@ -50,7 +50,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r text-black from-blue-50 to-blue-400 opacity-80  p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b text-black from-blue-20 to-blue-400 opacity-80  p-4">
       <div className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md">
         <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
           Create Account

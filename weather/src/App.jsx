@@ -9,6 +9,7 @@ import Map from './components/Map';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import { motion } from 'framer-motion';
+import Error404 from './components/Error404';
 
 
 
@@ -135,6 +136,10 @@ function App() {
               <SignIn></SignIn>
             </motion.div>
           </div>
+      },
+      {
+        path: "*",
+        element: <Error404 />
       }
     ]
   );

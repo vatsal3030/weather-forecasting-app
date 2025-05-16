@@ -13,7 +13,7 @@ import {
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-const API_KEY = "cbbffc95b1351710889b79afe12835d0";
+const API_KEY = import.meta.env.VITE_WEATHER_API_KEY; // Replace with your API key
 
 const WeatherGraph = () => {
     const [city, setCity] = useState("New York");
@@ -84,13 +84,14 @@ const WeatherGraph = () => {
     });
 
     return (
-        <div className="min-h-screen w-full  bg-gradient-to-b text-white p-6 from-blue-40 to-blue-200 ">
+        <div className="min-h-screen w-full  bg-gradient-to-b text-white p-6 from-blue-20 to-blue-400 ">
             <h1 className="text-3xl font-bold text-center mb-4">Advanced Weather Tracker</h1>
             <div className="flex justify-center gap-4 mb-6">
                 <input
                     type="text"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && fetchWeatherData()}
                     className="p-2 rounded-md text-white border-2 border-blue-300"
                     placeholder="Enter city..."
                 />
